@@ -14,12 +14,18 @@ Le script utilise `wget` pour télécharger les fichiers et `curl` pour obtenir 
 
 ## Exemple d'utilisation
 
-```bash
+```
 ./dliteWeb.sh "https://softwareupdate.vmware.com/cds/vmw-desktop/player/12.0.0/2985596/"
+```
+```
 ./dliteWeb.sh "https://softwareupdate.vmware.com/cds/vmw-desktop/player/12.0.0/2985596/" --log
+```
+```
 ./dliteWeb.sh "https://softwareupdate.vmware.com/cds/vmw-desktop/player/12.0.0/2985596/" 4 --log
-./dliteWeb.sh "https://softwareupdate.vmware.com/cds/vmw-desktop/player/12.0.0/2985596/" 4 <RepertoireCible> --log
-
+```
+```
+./dliteWeb.sh "https://softwareupdate.vmware.com/cds/vmw-desktop/player/12.0.0/2985596/" 4 monRepertoire --log
+```
 
 ## Arguments
 
@@ -43,7 +49,7 @@ Le script utilise `wget` pour télécharger les fichiers et `curl` pour obtenir 
 - `calculate_local_file_sizes()` : Calcule les tailles des fichiers téléchargés en local.
 
 ## Exemple de sortie
-
+```
 Processing URL: https://softwareupdate.vmware.com/cds/vmw-desktop/player/12.0.0/2985596/
 DEBUG : ../softwareupdate.vmware.com/ !!
 File : example.txt
@@ -51,11 +57,12 @@ Size : 10 Mo
 Updated total size: 10 Mo
 Taille totale : 10 Mo
 Nb total de fichier : 1
+```
 
 Les fichiers téléchargés et la structure des répertoires sont conservés dans le répertoire : 
-/chemin/actuel/softwareupdate.vmware.com/
+```/chemin/actuel/softwareupdate.vmware.com/```
 ou
-/chemin/actuel/<RepertoireCible>/softwareupdate.vmware.com/ si vous avez precisé l'option <RepertoireCible>
+```/chemin/actuel/<RepertoireCible>/softwareupdate.vmware.com/``` si vous avez precisé l'option <RepertoireCible>
 
 ## Licence
 Ce projet est sous licence MIT.
