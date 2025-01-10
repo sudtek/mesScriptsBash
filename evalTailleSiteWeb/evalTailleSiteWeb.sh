@@ -1,5 +1,6 @@
-#!/bin/bash
-
+# 08/janvier/2025
+# yannick SUDRIE
+#
 # Ce script parcourt un site web spécifié par une URL et calcule la taille totale des fichiers
 # sans les télécharger ni créer de répertoires locaux. Il accepte deux arguments :
 # 1. L'URL du site web à parcourir.
