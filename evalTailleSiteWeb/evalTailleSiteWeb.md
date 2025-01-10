@@ -1,7 +1,8 @@
+# evalTailleSiteWeb.sh
 06/01/2025
 yannick SUDRIE
 
-Description
+## Description
 Ce script parcourt un site web spécifié par une URL et calcule la taille totale des fichiers sans les télécharger ni créer de répertoires locaux. Il accepte deux arguments :
 
 L'URL du site web à parcourir.
@@ -42,7 +43,7 @@ show_loading_animation() : Fonction pour afficher une animation de chargement.
 Sortie
 Le script affiche les tailles des fichiers et la taille totale dans une forme lisible par un humain. Si l'option --log est activée, les messages de log sont enregistrés dans un fichier de log.
 
-Exemple de sortie
+## Exemple de sortie
 
 Processing URL: https://softwareupdate.vmware.com/cds/vmw-desktop/player/12.0.0/2985596/
 wget output: ...
@@ -55,5 +56,5 @@ Updated total size: 202 Mo
 Taille totale : 202 Mo
 
 
-Licence
+## Licence
 Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
