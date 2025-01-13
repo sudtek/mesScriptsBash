@@ -118,11 +118,9 @@ process_files() {
     echo "Processing URL: $base_url"
 
     # Utiliser wget pour télécharger les fichiers
-    #wget --recursive --no-parent --directory-prefix="$REPERTOIRE_CIBLE" --cut-dirs="$CUT_DIRS" --reject "index.html*" "$base_url" 2>&1
     wget --recursive --no-parent --directory-prefix="$REPERTOIRE_CIBLE" --cut-dirs="$CUT_DIRS" --reject "index.html*" --timestamping "$base_url" 2>&1
 
-    
-    # -recursive : Télécharge les fichiers de manière récursive.
+	# -recursive : Télécharge les fichiers de manière récursive.
 	# --no-parent : Empêche wget de remonter dans les répertoires parents.
 	# --directory-prefix="$REPERTOIRE_CIBLE" : Spécifie le répertoire de destination.
 	# --cut-dirs="$CUT_DIRS" : Spécifie le nombre de répertoires à supprimer de la structure de répertoires téléchargée.
