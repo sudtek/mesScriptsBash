@@ -4,7 +4,7 @@ yannick SUDRIE
 
 ## Description
 
-Ce script Bash parcourt un site web spécifié par une URL, télécharge la structure de répertoire et les fichiers. Il accepte trois arguments :
+Ce script Bash parcourt un site web spécifié par une URL, télécharge la structure de répertoire et les fichiers. Il accepte en arguments :
 1. L'URL du site web à parcourir.
 2. Le nombre de niveaux de répertoires à ignorer dans l'URL.
 3. Option du nom de répertoire où télécharger les fichiers.
@@ -65,4 +65,4 @@ ou
 ```/chemin/actuel/<RepertoireCible>/softwareupdate.vmware.com/``` si vous avez precisé l'option <RepertoireCible>
 
 ## Licence
-Ce projet est sous licence MIT.
+Ce script est sous licence MIT.
