@@ -1,13 +1,15 @@
 #!/bin/bash
-
-# 16/01/2025
 #
-# BUT : POC pour tester etconfigurer qemu-user-static sur un PC hote x86 afin de télécharger et tester un conteneur aarch64
-# ATTENTION le container qemu-user-static requier un droit --privileged pour gréfer une aarch64 à l'hote d'une facon PERMANENTE dans /proc/sys/fs/binfmt_misc/qemu-aarch64 -> donc il y a une faible probabilité que cela fonctionne sur un systéme tiers que vous ne controlez pas et qui ne permet pas l'option --privileged
-# Ce POC est donc juste pour faire un équivalent à "Helloworld" et affichera "aarch64" dans la console si tout a fonctioné correctement.
+# 16/01/2025
+# V_0.1
+# BUT : POC pour tester et configurer qemu-user-static sur un PC hote x86 afin de pouvoir télécharger sans se prendre l'erreur "No matching manifest for linux/arm64/v8 in the manifest list entries" 
+# pour cause de non prise en charge de l'architecture arch64 lorsque l'on l'ont fait un pull de linux/arm64. (voir https://forums.docker.com/t/how-to-fix-no-matching-manifest-ubuntu-22-04/128569)
+# ATTENTION le container qemu-user-static requier un droit --privileged pour gréfer une aarch64 à l'hote d'une facon PERMANENTE et PERSISTANTE dans /proc/sys/fs/binfmt_misc/qemu-aarch64
+# donc il y a une trés faible probabilité que ce POC fonctionne sur un systéme tiers que vous ne controlez pas et qui ne permet pas l'option --privileged.
+# Ce POC est donc juste pour faire un équivalent à "Helloworld" et affichera "aarch64" dans la console si tout a fonctioné correctement et vous permetra de faire des pull sans avoir l'erreur de manifest.
 # 
 #
-# Architecture hote :
+# Architecture hote de test :
 # Linux lenovo2 5.4.0-200-generic #220-Ubuntu SMP Fri Sep 27 13:19:16 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
 # 
 # Docker version :
@@ -38,10 +40,8 @@
 #  docker-init:
 #   Version:          0.19.0
 #   GitCommit:        de40ad0
-
 #
-
-# 
+# -------------------------------------------------------------------------------------------------------------
 # Ajout permanent de l'architecture ARM arch64 à l'hote 
 echo "Pull et ajout permanent de l'architecture ARM arch64 à l'hote (ssi option --privileged authorisée !)"
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
