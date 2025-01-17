@@ -13,4 +13,4 @@ Scripts shell bash dédiés au web visant à automatiser des manipulations fasti
 
 Scripts shell bash dédiés au système  pour tester et bidouiller ...
 
-- [qemu_static_ARM.sh]() : Ce script est un simple POC docker qui permet via un pull de qemu-user-static sur un PC hote x86, ajouter le greffon de facon permanente au systéme hote et faire un pull d'un conteneur aarch64. ATTENTION requier des priviléges pour fonctionner !
+- [dockerAddQemuStaticARM.sh]() : Ce script est un simple POC docker qui permet via un pull de qemu-user-static sur un PC hote x86, ajouter le greffon de facon permanente au systéme hote et faire un pull d'un conteneur aarch64 ARM. (ATTENTION requier des priviléges pour fonctionner !)
