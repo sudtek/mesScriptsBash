@@ -20,7 +20,7 @@ sudo apt remove open-vm-tools-desktop -y
 
 # Etre certain que le keymap du clavier est bien en fr et pas sur une version alternative ...
 echo  "Passage du clavier en Francais !"
-setxkmap fr
+setxkbmap fr
 setxkbmap -option grp:alt_shift_toggle
 
 # Faire un update
