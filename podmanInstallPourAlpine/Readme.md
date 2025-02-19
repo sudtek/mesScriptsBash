@@ -1,5 +1,4 @@
-19/02/2025
-yannick SUDRIE
+# Installer podman sur distribution Alpine en rootless
 
 ## Description
 
@@ -10,43 +9,46 @@ Ces scripts ont pour but d'automatiser l'installation de podman (un clone de doc
 
 ... néanmoins pour les utilisateurs d'ubuntu et debian certains manipulations trés basiques peuvent vite prendre la tête surtout lorsque l'on manipule peut la distribution hote (ou tourne podman) et que l'on se concentre sur les containers.
 
+## Donner pouvoir "doas" à un utilsateur :
 
 [create_user_doas.sh](https://github.com/sudtek/mesScriptsBash/blob/136ecd972dfbcb708babcf512d78de23b82efea8/podmanInstallPourAlpine/create_user_doas.sh)
 
-L'absence de "sudo" de base à pour équivalent "doas" mais n'est pas implanté par défaut j'ai donc créé deux scripts indépendants pour ne plus à avoir à chaque fois à rechercher comment faire. Si vous venez d'installer la distribution Alpine vous devez avant tout au moins créer 1er utilisateur via la commande adduser avant d'invoquer ces scripts ... 
+L'absence de "sudo" de base à pour équivalent "doas" mais n'est pas implanté par défaut j'ai donc créé deux scripts indépendants pour ne plus à avoir à chaque fois à rechercher comment faire. Si vous venez juste d'installer la distribution Alpine vous devez avant tout au moins créer 1er utilisateur via la commande adduser avant d'invoquer les scripts suivants. 
 
-## Utilisation
-En root il vous faut créer l'utilisateur bernardo qui manipulera podman et les containeurs :
+En root il vous faut créer l'utilisateur exemple "bernardo" qui manipulera podman et les containeurs :
+
 ```
 adduser bernardo
 ```
+
 oubien avec un utilisateur avec pouvoir deja capable de faire un "doas" :
+
 ```
 doas adduser bernardo # équivalent à sudo adduser bernardo
 ```
 
-Bonen pratique : Toujours fermer et réouvrir la session aprés avoir donné le pouvoir à un utilisateur de faire un "doas" pour assurer une bonne màj.
+_Note : Toujours fermer et réouvrir la session aprés avoir donné pouvoir à un utilisateur de faire un "doas" pour assurer une bonne màj._
 
+
+## Installer podman avec un utilsateur rootless :
 
 [install_podman.sh](https://github.com/sudtek/mesScriptsBash/blob/136ecd972dfbcb708babcf512d78de23b82efea8/podmanInstallPourAlpine/install_podman.sh)
 
-Prérequis : Avoir un utilsateur !! NON ROOT !! capable de lancer une commande via un "doas" si vous avez un doute avant de lancer le script faites un simple :
+Prérequis : Avoir un utilsateur !! NON ROOT !! capable de lancer une commande via un "doas" si vous avez un doute avant de lancer le script faites ce simple test :
 
 ```
 doas echo "doas Fonctionne pour : $(whoami) !"
 ```
 
-Si vous lisez "doas Fonctionne pour : bernardo !" alors vous pouvez installer podman !
+Si vous lisez "doas Fonctionne pour : bernardo !" alors vous pouvez installer podman.
 
 
 Ce script va installer podman dans la distribution Alpine, donner le droit à un utilisateur avec privilége mais NON ROOT !! capable de faire "doas" afin qu'il puisse manipuler podman sans avoir à faire doas tout le temps. Le nom de l'utilisateur vous sera demandé interactivement par le script pas besoin de le passer en argument.
-Le script vous posera une question optionelle concernant le numéro de ports minimum qui pourra être utilisé par defaut il interdira de faire des containeurs qui vont  essayer d'utiliser des ports strictement inferieur au port 80.C'est à adapter en fonction de vos besoin !
-
+Ce script vous posera une question optionelle concernant le numéro de ports minimum qui pourra être utilisé par defaut il interdira de faire des containeurs qui vont essayer d'utiliser des ports bas strictement inferieur au port 80 (C'est à adapter en fonction de vos besoin ...).
 
 ```
 doas ./install_podman.sh
 ```
-
 
 Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !
 
