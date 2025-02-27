@@ -4,9 +4,9 @@
 # But : installation rapide de podman (équivalent à docker opensource) sur alpine 3.21.2 64 bits du 08 janvier 2025
 # On part du principe que vous avez déjà un user doas (équivalent à sudo chez alpine)
 
-# Vérifier que le script est exécuté en root ou avec doas
+# Vérifier que le script est exécuté en avec doas
 if [ "$(id -u)" -ne 0 ]; then
-    echo "Ce script doit être exécuté avec les privilèges root ou avec doas (équivalent sudo)." >&2
+    echo "Ce script doit être exécuté avec les privilèges avec doas (équivalent sudo) et PAS DEPUIS ROOT !" >&2
     exit 1
 fi
 
@@ -21,11 +21,6 @@ else
     echo "Le dépôt community est déjà activé ou n'a pas été trouvé."
 fi
 
-# Activation community repo améliorée
-# non à  revoir car decommante tout ...
-#sed -i '/community/ s/^#//' /etc/apk/repositories
-
-
 # Activer cgroups v2
 echo "Configuration de cgroups v2..."
 if ! grep -q '^rc_cgroup_mode="unified"' /etc/rc.conf; then
@@ -35,6 +30,10 @@ fi
 # Activer le service cgroups
 echo "Activation du service cgroups..."
 rc-update add cgroups && rc-service cgroups start
+
+# Note cgroups : cgroup sera plus tard utile si vous voulez lancer des container en tunnant & bridant leus ressources 
+# allouées pour ne pas les laisser bouffer toutes vos ressources systéme ! 
+# Se reporter au projet portainer-docker-install-always-restart script xxxLimit.sh pour plus de détails.
 
 # Mettre à jour les packages
 apk update
