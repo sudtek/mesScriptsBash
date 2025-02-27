@@ -50,8 +50,13 @@ Ce script vous posera une question optionelle concernant le numéro de ports min
 doas ./install_podman.sh
 ```
 
-Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !
+Avec la distribtion Alpine le service Podman doit être manuellement ajouté et activé pour être actif car sur Alpine c'est pas parce qu'on installe un service qu'il redémarera automatiquement au prochain reboot source [Howto enable and start services on Alpine linux](https://www.cyberciti.biz/faq/how-to-enable-and-start-services-on-alpine-linux/).
 
+```
+doas rc-update add podman default
+```
+
+_Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !_
 
 ## Licence
 Ce projet est sous licence MIT.
