@@ -99,11 +99,14 @@ echo "Ajout et activation du service Podman au reboot ! -> OK!"
 #doas rc-update add podman default
 # Le service Podman en mode rootless doit être géré par l'utilisateur et non par le système. Cela signifie que le service doit être démarré par l'utilisateur et non par root.
 
+
+
+# Si vous utilisez systemctl comme Service utilisateur pour Podman en ROOTLESS il faudra decommenter cette section et commenter celle de OpenRC
+: <<'COMMENT'
 # Créez un fichier de service utilisateur dans ~/.config/systemd/user/ (si vous utilisez systemd)
 mkdir -p ~/.config/systemd/$(whoami)/
 touch ~/.config/systemd/$(whoami)/podman.service
 
-# Service utilisateur pour Podman en ROOTLESS
 cat <<EOF > ~/.config/systemd/$(whoami)/podman.service
 [Unit]
 Description=Podman API Service
@@ -120,5 +123,7 @@ EOF
 #activer et démarrer le service 
 systemctl --user enable podman.service
 systemctl --user start podman.service
+COMMENT
+
 
 echo "Vous devriez peut-être redémarrer votre système pour vérifier que toutes les modifications prennent effet ..."
