@@ -94,12 +94,13 @@ su - "$USERNAME" -c "podman run --rm hello-world"
 
 echo "Installation de Podman terminée -> OK!"
 
-echo "Ajout et activation du service Podman au reboot ! -> OK!"
-# Attention cette rc-update est uniquement valable en mode root pour lancer des services systémes et ne pourra pas lancer le service utilisateur Podman aprés un reboot en mode ROOTLESS !
+echo "Ajout et activation du service Podman au reboot ! "
+# Attention rc-update est uniquement valable en mode root pour lancer des services systémes et ne pourra pas lancer le service utilisateur Podman aprés un reboot en mode ROOTLESS !
 #doas rc-update add podman default
 # Le service Podman en mode rootless doit être géré par l'utilisateur et non par le système. Cela signifie que le service doit être démarré par l'utilisateur et non par root.
-# attention par défaut ALpine utlise OpenRC et pas systemctl !
+# Par défaut Alpine utlise OpenRC et pas systemCtl !!!!!
 
+# ---------------------------------------------------------------------------------------
 #: <<'OPENRC'
 # Créez un fichier de service dans /etc/init.d/ pour Podman
 doas touch /etc/init.d/podman-rootless
@@ -127,7 +128,7 @@ stop() {
 }
 EOF
 
-# Fixer les permissions d'exécution au fichier 
+# Fixer les permissions d'exécution au fichier
 doas chmod +x /etc/init.d/podman-rootless
 
 # Ajouter le service au démarrage
@@ -139,8 +140,12 @@ doas rc-service podman-rootless start
 # Vérifier que le service fonctionne
 doas rc-service podman-rootless status
 #OPENRC
+# ---------------------------------------------------------------------------------------
 
-# Si vous utilisez systemctl comme Service utilisateur pour Podman en ROOTLESS il faudra decommenter cette section et commenter celle de OpenRC
+
+# ATTENTION le bloc suivant SYSTEMCTL n'a pas été testé il est fourni à titre indicatif pour une autre distro !!!
+# ---------------------------------------------------------------------------------------
+# Si vous utilisez systemctl comme Service utilisateur pour Podman en ROOTLESS il faudra decommenter cette section et commenter le bloc précédent de OpenRC
 : <<'SYSTEMCTL'
 # Créez un fichier de service utilisateur dans ~/.config/systemd/user/ (si vous utilisez systemd)
 mkdir -p ~/.config/systemd/$(whoami)/
@@ -163,6 +168,7 @@ EOF
 systemctl --user enable podman.service
 systemctl --user start podman.service
 SYSTEMCTL
+# ---------------------------------------------------------------------------------------
 
-
+echo " FIN !"
 echo "Vous devriez peut-être redémarrer votre système pour vérifier que toutes les modifications prennent effet ..."
