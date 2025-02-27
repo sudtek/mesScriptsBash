@@ -50,11 +50,23 @@ Ce script vous posera une question optionelle concernant le numéro de ports min
 doas ./install_podman.sh
 ```
 
-Avec la distribtion Alpine le service Podman doit être manuellement ajouté et activé pour être actif car sur Alpine c'est pas parce qu'on installe un service qu'il redémarera automatiquement au prochain reboot source [Howto enable and start services on Alpine linux](https://www.cyberciti.biz/faq/how-to-enable-and-start-services-on-alpine-linux/).
+Avec la distribtion Alpine le service Podman doit être ajouté et activé pour être actif car sur Alpine c'est pas parce qu'on installe un service qu'il redémarera automatiquement au prochain reboot source [Howto enable and start services on Alpine linux](https://www.cyberciti.biz/faq/how-to-enable-and-start-services-on-alpine-linux/) mais vu que l'on a fait une installation en ROOTLESS -> Le service Podman en mode rootless doit être géré par l'utilisateur et non par le système. Cela signifie que le service doit être démarré par l'utilisateur et non par root.
 
+Donc cette commande est uniquement valable en mode root standard et ne pourra pas lancer le service Podman aprés un reboot en mode ROOTLESS :
 ```
 doas rc-update add podman default
 ```
+au reboot si vous consultez les status : ```rc-status default``` Podman n'aura pas redémaré :
+```
+Runlevel: default
+ acpid    [  started  ]
+ crond    [  started  ]
+ chronyd  [  started  ]
+ cgroup   [  started  ]
+ podman   [  stopped  ]**
+ sshd     [  started  ]
+```
+
 
 _Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !_
 
