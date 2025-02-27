@@ -95,6 +95,7 @@ su - "$USERNAME" -c "podman run --rm hello-world"
 echo "Installation de Podman terminée -> OK!"
 
 echo "Ajout et activation du service Podman au reboot ! -> OK!"
-doas rc-update add podman default
+# Attention cette commande est uniquement valable en mode root pour lancer des services systémes et ne pourra pas lancer le service utilisateur Podman aprés un reboot en mode ROOTLESS !
+#doas rc-update add podman default
 
 echo "Vous devriez peut-être redémarrer votre système pour que toutes les modifications prennent effet ..."
