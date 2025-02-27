@@ -88,10 +88,13 @@ if echo "$PORT_CHOICE" | grep -iq "^y"; then
     sysctl -p /etc/sysctl.conf
 fi
 
-
 # Tester Podman
 echo "Test de Podman avec hello-world..."
 su - "$USERNAME" -c "podman run --rm hello-world"
 
-echo "Installation terminée !"
-echo "Vous devrez peut-être redémarrer votre système pour que toutes les modifications prennent effet."
+echo "Installation de Podman terminée -> OK!"
+
+echo "Ajout et activation du service Podman au reboot ! -> OK!"
+doas rc-update add podman default
+
+echo "Vous devriez peut-être redémarrer votre système pour que toutes les modifications prennent effet ..."
