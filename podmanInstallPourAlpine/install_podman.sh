@@ -31,9 +31,9 @@ fi
 echo "Activation du service cgroups..."
 rc-update add cgroups && rc-service cgroups start
 
-# Note cgroups : cgroup sera plus tard utile si vous voulez lancer des container en tunnant & bridant leus ressources 
-# allouées pour ne pas les laisser bouffer toutes vos ressources systéme ! 
-# Se reporter au projet portainer-docker-install-always-restart script xxxLimit.sh pour plus de détails.
+# Note cgroups : cgroup sera plus tard utile si vous voulez lancer des container en bridants leus ressources allouées.
+# Dans le but de pas les laisser bouffer toutes vos ressources systémes et planter l'hôte. 
+# Se reporter au projet portainer-docker-install-always-restart script xxxLimit.sh pour plus de détails et informations.
 
 # Mettre à jour les packages
 apk update
