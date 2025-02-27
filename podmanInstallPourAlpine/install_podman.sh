@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# 19 février 2025
+# 27 février 2025
 # But : installation rapide de podman (équivalent à docker opensource) sur alpine 3.21.2 64 bits du 08 janvier 2025
 # On part du principe que vous avez déjà un user doas (équivalent à sudo chez alpine)
 
