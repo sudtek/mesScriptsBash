@@ -98,8 +98,47 @@ echo "Ajout et activation du service Podman au reboot ! -> OK!"
 # Attention cette rc-update est uniquement valable en mode root pour lancer des services systémes et ne pourra pas lancer le service utilisateur Podman aprés un reboot en mode ROOTLESS !
 #doas rc-update add podman default
 # Le service Podman en mode rootless doit être géré par l'utilisateur et non par le système. Cela signifie que le service doit être démarré par l'utilisateur et non par root.
+# attention par défaut ALpine utlise OpenRC et pas systemctl !
 
+#: <<'OPENRC'
+# Créez un fichier de service dans /etc/init.d/ pour Podman
+doas touch /etc/init.d/podman-rootless
 
+doas cat <<EOF > /etc/init.d/podman-rootless
+#!/sbin/openrc-run
+
+description="Podman rootless service"
+
+depend() {
+    need localmount
+    after bootmisc
+}
+
+start() {
+    ebegin "Starting Podman rootless service"
+    /usr/bin/podman system service --time=0 &
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping Podman rootless service"
+    pkill -f "podman system service --time=0"
+    eend $?
+}
+EOF
+
+# Fixer les permissions d'exécution au fichier 
+doas chmod +x /etc/init.d/podman-rootless
+
+# Ajouter le service au démarrage
+doas rc-update add podman-rootless default
+
+# Démarrer le service manuellemen
+doas rc-service podman-rootless start
+
+# Vérifier que le service fonctionne
+doas rc-service podman-rootless status
+#OPENRC
 
 # Si vous utilisez systemctl comme Service utilisateur pour Podman en ROOTLESS il faudra decommenter cette section et commenter celle de OpenRC
 : <<'SYSTEMCTL'
