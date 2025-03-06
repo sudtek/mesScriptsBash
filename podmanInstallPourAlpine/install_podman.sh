@@ -106,6 +106,6 @@ doas rc-service podman-rootless start
 doas rc-service podman-rootless status
 
 echo "Installation de Podman terminée -> OK !"
-echo "Maintennant : "
+echo "Maintenant : "
 echo "#1 Vous devriez redémarrer votre système pour vérifier que toutes les modifications prennent effet ..."
-echo "#2 Aprés reboot ajouté des utilisateurs à podman en rootless via le script add_user_podman.sh ! "
+echo "#2 Aprés le reboot il faudra ajouter des utilisateurs à podman rootless via le script add_user_podman.sh ! "
