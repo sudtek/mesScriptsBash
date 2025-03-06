@@ -11,7 +11,7 @@ Ces scripts ont pour but d'automatiser l'installation de podman (un clone de doc
 
 ## Créer & donner pouvoir "doas" à un utilisateur :
 
-[create_user_doas.sh](https://github.com/sudtek/mesScriptsBash/blob/136ecd972dfbcb708babcf512d78de23b82efea8/podmanInstallPourAlpine/create_user_doas.sh)
+[create_user_doas.sh](create_user_doas.sh)
 
 L'absence de "sudo" de base à pour équivalent "doas" mais n'est pas implanté par défaut j'ai donc créé deux scripts indépendants pour ne plus à avoir à chaque fois à rechercher comment faire. Si vous venez juste d'installer la distribution Alpine vous devez avant tout au moins créer 1er utilisateur via la commande adduser avant d'invoquer les scripts suivants. 
 
@@ -71,7 +71,7 @@ Runlevel: default
 _Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !_
 
 ## Ajouter un utilisateur pour qu'il puisse utiliser podman en rootless :
-[add_user_podman.sh](https://github.com/sudtek/mesScriptsBash/blob/3ef065de10773f6f8ac50bbe5d999e2dbd13acc8/podmanInstallPourAlpine/add_user_rootless.sh)
+[add_user_podman.sh](add_user_rootless.sh)
 
 Prérequis : 
 - #1 Ce script doit être invoqué avec un utilisateur qui à des privilèges (doas). 
