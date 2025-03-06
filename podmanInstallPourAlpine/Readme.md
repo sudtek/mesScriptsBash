@@ -71,7 +71,7 @@ Runlevel: default
 _Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !_
 
 ## Ajouter un utilisateur pour qu'il puisse utiliser podman en rootless :
-[add_user_podman.sh]()
+[add_user_podman.sh](https://github.com/sudtek/mesScriptsBash/blob/3ef065de10773f6f8ac50bbe5d999e2dbd13acc8/podmanInstallPourAlpine/add_user_rootless.sh)
 
 Prérequis : 
 - #1 Ce script doit être invoqué avec un utilisateur qui à des privilèges (doas). 
@@ -79,11 +79,8 @@ Prérequis :
 - #3 L'utilisateur à ajouter à podman doit exister sur le systéme.
 
 On peut invoquer ce script de deux facons :
-
-#1 soit en fournissant en argument le nom de l'utilisateur qui serra chargé piloter podman : ```doas ./add_user_rootless.sh bernardo```
-
-#2 soit sans argument : ```doas ./add_user_rootless.sh```  le nom de l'utilisateur serra réclamé et saisi interactivement.
-
+- #1 soit en fournissant en argument le nom de l'utilisateur qui serra chargé piloter podman : ```doas ./add_user_rootless.sh bernardo```
+- #2 soit sans argument : ```doas ./add_user_rootless.sh```  le nom de l'utilisateur devra être saisi interactivement.
 
 ## Licence
 Ce projet est sous licence MIT.
