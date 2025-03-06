@@ -68,7 +68,7 @@ Runlevel: default
 ```
 
 
-_Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !_
+_Note : Attention par defaut la distribution ALpine utilise sh et pas bash !_
 
 ## Ajouter un utilisateur pour qu'il puisse utiliser podman en rootless :
 [add_user_podman.sh](add_user_rootless.sh)
