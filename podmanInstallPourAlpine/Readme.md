@@ -32,7 +32,7 @@ _Note : Toujours fermer et réouvrir la session aprés avoir donné pouvoir à u
 
 ## Installer podman en rootless :
 
-[install_podman.sh](https://github.com/sudtek/mesScriptsBash/blob/136ecd972dfbcb708babcf512d78de23b82efea8/podmanInstallPourAlpine/install_podman.sh)
+[install_podman.sh](install_podman.sh)
 
 Prérequis : Avoir un utilsateur !! NON ROOT !! capable de lancer une commande via un "doas" si vous avez un doute avant de lancer le script faites ce simple test :
 
