@@ -14,7 +14,7 @@ fi
 
 # Vérifier si Podman est déjà en cours d'exécution
 if rc-service podman status > /dev/null 2>&1; then
-    echo "Podman est déjà en cours d'exécution. Arrêtez le service avant de continuer l'installation." >&2
+    echo "Podman est déjà en cours d'exécution. Arrêtez le service et /ou désinstaller podman avant de faire une nouvelle installation." >&2
     exit 1
 fi
 
