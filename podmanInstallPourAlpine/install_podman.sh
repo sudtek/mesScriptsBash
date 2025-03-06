@@ -64,8 +64,8 @@ fi
 # Configurer subuid/subgid
 #Gestion rootless sécurisée
 if ! grep -q "^${USERNAME}:" /etc/subuid; then
-    echo "${USERNAME}:100000:65536" > /etc/subuid
-    echo "${USERNAME}:100000:65536" > /etc/subgid
+    echo "${USERNAME}:100000:65536" >> /etc/subuid
+    echo "${USERNAME}:100000:65536" >> /etc/subgid
 fi
 
 
