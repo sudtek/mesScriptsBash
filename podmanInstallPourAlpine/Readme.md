@@ -2,14 +2,14 @@
 
 ## Description
 
-Ces scripts ont pour but d'automatiser l'installation de podman (un clone de docker opensource) dans une distribution Alpine 3.2 et d'avoir des utilisateurs rootless qui sont capables de manipuler des containeurs sans être root. Alpine est connue pour sa faible taille, surface d'attaque, sa robustesse ... (sa lib musl ...) c'est une des distributions incontournable pour tout ce qui touche de prés ou de loin aux containeurs, Exemples :
+Ces scripts ont pour but d'automatiser l'installation de podman (un clone de docker opensource) en rootless dans une distribution Alpine 3.2 et d'avoir des utilisateurs rootless qui sont capables de manipuler (créer, administrer, gérer / limiter les ressources ...)  des containeurs de podman sans être root. Alpine est connue pour sa faible taille, surface d'attaque, sa robustesse ... (sa lib musl ...) c'est une des distributions incontournable pour tout ce qui touche de prés ou de loin aux containeurs, Exemples :
 
 - faire un pull Alpine pour créer un container.
 - faire une VM dans un hyperviseur (vmware,proxmox,hyperv,Qemu ...) et y installer podman pour heberger ses containeurs.
 
-... néanmoins pour les utilisateurs d'ubuntu et debian certains manipulations trés basiques peuvent vite prendre la tête surtout lorsque l'on manipule peut la distribution hote (ou tourne podman) et que l'on se concentre sur les containers.
+... néanmoins pour les utilisateurs d'ubuntu et debian certains manipulations trés basiques peuvent vite prendre la tête surtout lorsque l'on manipule peut la distribution hôte (ou tourne podman) et que l'on se concentre sur les containers.
 
-## Donner pouvoir "doas" à un utilsateur :
+## Créer & donner pouvoir "doas" à un utilisateur :
 
 [create_user_doas.sh](https://github.com/sudtek/mesScriptsBash/blob/136ecd972dfbcb708babcf512d78de23b82efea8/podmanInstallPourAlpine/create_user_doas.sh)
 
@@ -30,7 +30,7 @@ doas adduser bernardo # équivalent à sudo adduser bernardo
 _Note : Toujours fermer et réouvrir la session aprés avoir donné pouvoir à un utilisateur de faire un "doas" pour assurer une bonne màj._
 
 
-## Installer podman avec un utilsateur rootless :
+## Installer podman en rootless :
 
 [install_podman.sh](https://github.com/sudtek/mesScriptsBash/blob/136ecd972dfbcb708babcf512d78de23b82efea8/podmanInstallPourAlpine/install_podman.sh)
 
@@ -44,7 +44,7 @@ Si vous lisez "doas Fonctionne pour : bernardo !" alors vous pouvez installer po
 
 
 Ce script va installer podman dans la distribution Alpine, donner le droit à un utilisateur avec privilége mais NON ROOT !! capable de faire "doas" afin qu'il puisse manipuler podman sans avoir à faire doas tout le temps. Le nom de l'utilisateur vous sera demandé interactivement par le script pas besoin de le passer en argument.
-Ce script vous posera une question optionelle concernant le numéro de ports minimum qui pourra être utilisé par defaut il interdira de faire des containeurs qui vont essayer d'utiliser des ports bas strictement inferieur au port 80 (C'est à adapter en fonction de vos besoin ...).
+Ce script vous posera une question optionelle concernant le numéro de ports minimum qui pourra être utilisé par defaut il interdira de faire des containeurs qui vont essayer d'utiliser des ports bas strictement inferieur au port 1024 (C'est à adapter en fonction de vos besoin ...).
 
 ```
 doas ./install_podman.sh
@@ -69,6 +69,21 @@ Runlevel: default
 
 
 _Note : Attention par defaut la distribution ALpine utilise par defaut sh et pas bash !_
+
+## Ajouter un utilisateur pour qu'il puisse utiliser podman en rootless :
+[add_user_podman.sh]()
+
+Prérequis : 
+- #1 Ce script doit être invoqué avec un utilisateur qui à des privilèges (doas). 
+- #2 Podman doit être installé et fonctionnel.
+- #3 L'utilisateur à ajouter à podman doit exister sur le systéme.
+
+On peut invoquer ce script de deux facons :
+
+#1 soit en fournissant en argument le nom de l'utilisateur qui serra chargé piloter podman : ```doas ./add_user_rootless.sh bernardo```
+
+#2 soit sans argument : ```doas ./add_user_rootless.sh```  le nom de l'utilisateur serra réclamé et saisi interactivement.
+
 
 ## Licence
 Ce projet est sous licence MIT.
