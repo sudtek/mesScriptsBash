@@ -29,12 +29,20 @@ else
     echo "Le dépôt community est déjà activé ou n'a pas été trouvé."
 fi
 
-# Activer cgroups v2
-echo "Configuration de cgroups v2..."
+# cgroups v2
+# Toutes les informations pour cgroups version 2, sont disponible dasn Documentation/cgroups-v2.txt dasn le kernel linux
+# Dans le fichier /etc/rc.conf il ya une section # LINUX CGROUPS RESOURCE MANAGEMENT ou il est possible de fixer 
+# la taille mémoire et le PID maximum pour un service si on désire eviter que Podman puisse consommer toutes les ressources systeme
+# mais Attention toutes les modifications apportées dans le fichier /etc/rc.conf sont globales et pas au niveau des utilisateurs podman :
+# 
+# rc_cgroup_settings="
+# memory.max 10485760
+# pids.max max
+
+echo "Configurer cgroups en v2 ..."
 if ! grep -q '^rc_cgroup_mode="unified"' /etc/rc.conf; then
     echo 'rc_cgroup_mode="unified"' >> /etc/rc.conf
 fi
-
 # Activer le service cgroups
 echo "Activation du service cgroups..."
 rc-update add cgroups && rc-service cgroups start
