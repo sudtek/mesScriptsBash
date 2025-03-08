@@ -82,5 +82,9 @@ On peut invoquer ce script de deux facons :
 - #1 soit en fournissant en argument le nom de l'utilisateur qui serra chargé piloter podman : ```doas ./add_user_rootless.sh bernardo```
 - #2 soit sans argument : ```doas ./add_user_rootless.sh```  le nom de l'utilisateur devra être saisi interactivement.
 
+## Annexes  
+- Alpine-linux-cheat-sheet [https://github.com/masoudei/alpine-linux-cheat-sheet](https://github.com/masoudei/alpine-linux-cheat-sheet)
+- Le WIKI Podman [https://wiki.alpinelinux.org/wiki/Podman](https://wiki.alpinelinux.org/wiki/Podman)
+
 ## Licence
 Ce projet est sous licence MIT.
