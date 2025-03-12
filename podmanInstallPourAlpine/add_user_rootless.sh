@@ -50,6 +50,12 @@ if ! grep -q '^tun' /etc/modules; then
     echo "tun" >> /etc/modules
 fi
 
+# Activer le module fuse
+modprobe fuse 2>/dev/null || true
+if ! grep -q '^fuse' /etc/modules; then
+    echo "fuse" >> /etc/modules
+fi
+
 # Tester Podman pour l'utilisateur donné
 echo "Test de Podman avec hello-world..."
 su - "$USERNAME" -c "podman run --rm hello-world"
