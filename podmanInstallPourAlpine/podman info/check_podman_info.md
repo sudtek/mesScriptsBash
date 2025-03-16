@@ -1,6 +1,6 @@
 # Podman Info Checker
 
-Ce dépôt contient un script pour vérifier l'état de Podman (mode rootless et SELinux) en utilisant `podman info`.
+Un script pour vérifier l'état de Podman (mode rootless et SELinux) en utilisant `podman info`.
 
 ## Problématique
 
@@ -107,7 +107,7 @@ Le script tente d'utiliser un template Go non valide ({{.Host.Security.SelinuxEn
 Sortie attendue du script
 Si Podman est en mode rootless et que SELinux est désactivé, la sortie sera :
 
-Copy
+```
 DEBUG - Mode rootless (template Go) : true
 OK -> Podman est en mode rootless.
 DEBUG - SELinux activé (jq) : false
@@ -116,3 +116,4 @@ Tentative d'utilisation d'un template Go non valide :
 Error: template: info:1:7: executing "info" at <.Host.Security.SelinuxEnabled>: can't evaluate field SelinuxEnabled in type define.SecurityInfo
 Erreur : Champ SelinuxEnabled inaccessible via template Go.
 Script terminé.
+```
