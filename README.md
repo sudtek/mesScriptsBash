@@ -19,5 +19,8 @@ Scripts shell bash dédiés au système ...
 
 - [Installer podman sur Alpine](https://github.com/sudtek/mesScriptsBash/tree/7c466c87ee449c1144d6bf6e2577ba79cd0e2ccc/podmanInstallPourAlpine) : Un simple script shell pour pouvoir installer podman (équivalent à docker) sur une distribution Alpine et avoir des utilisateurs rootless (Pas besoin que les utilisateurs soient root pour lancer et manipuler les containers).
 
+-[linuxLeasyUpdate](https://github.com/sudtek/mesScriptsBash/blob/2088d88074796cb7f85d82e83a5246f9a467beb7/linuxLeasyUpdate/MAJ.sh) : Automatise la mise à jour complète d'un système Linux basé sur Debian en exécutant les commandes essentielles apt-get update, apt-get upgrade et apt-get dist-upgrade.
+
+
 ## Pour tester et bidouiller ...
 - [dockerAddQemuStaticARM.sh](https://github.com/sudtek/mesScriptsBash/tree/1ddd5ae851528df75a683ad730a7e292488d93d7/dockerAddQemuStaticARM) : Ce script est un simple POC docker qui permet via un pull de qemu-user-static sur un PC hote x86, ajouter le greffon de facon permanente au systéme hote et faire un pull d'un conteneur aarch64 ARM. (ATTENTION requier des priviléges pour fonctionner !)
