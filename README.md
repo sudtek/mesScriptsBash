@@ -1,4 +1,4 @@
-# mesScriptsBash
+# mesScriptsShell
 Une collection de petits scripts shell bash dédiées au web, au système ... visant à automatiser des manipulations fastidieuses ...
 
 ## Scripts web :
