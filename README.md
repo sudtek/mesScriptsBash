@@ -19,7 +19,7 @@ Scripts shell bash dédiés au système ...
 
 - [Installer podman sur Alpine](https://github.com/sudtek/mesScriptsBash/tree/7c466c87ee449c1144d6bf6e2577ba79cd0e2ccc/podmanInstallPourAlpine) : Un simple script shell pour pouvoir installer podman (équivalent à docker) sur une distribution Alpine et avoir des utilisateurs rootless (Pas besoin que les utilisateurs soient root pour lancer et manipuler les containers).
 
-- [linuxLeasyUpdate](https://github.com/sudtek/mesScriptsBash/tree/105233ab1b116ce4ed90a8a2527efd89cb61a639/linuxLeasyUpdate) : Automatise la mise à jour complète d'un système Linux basé sur Debian en exécutant les commandes essentielles apt-get update, apt-get upgrade et apt-get dist-upgrade.
+- [linuxLeasyUpdate](https://github.com/sudtek/mesScriptsBash/tree/105233ab1b116ce4ed90a8a2527efd89cb61a639/linuxLeasyUpdate) : Automatise la mise à jour complète d'un système Linux basé sur Debian,raspian,Ubuntu ... en exécutant les commandes essentielles apt-get update, apt-get upgrade et apt-get dist-upgrade.
 
 
 ## Pour tester et bidouiller ...
